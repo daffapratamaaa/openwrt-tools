@@ -1,0 +1,33 @@
+#!/bin/bash /etc/rc.common
+# Edited by Daffa Pratama
+
+START=99
+STOP=50
+
+# Parameters
+cfd_bin="/usr/bin/cloudflared"
+cfd_token="token_kamu_disini"
+
+function screen_pid(){
+    screen -ls | grep -oE "[0-9]+\.cloudflared\t" | sed -e "s/\..*$//g"
+}
+
+start(){
+    # Start Cloudflare
+    if [[ $(screen -ls | grep -wc "cloudflared") -eq 0 ]]; then
+        screen -dmS cloudflared ${cfd_bin} --no-autoupdate tunnel run --token ${cfd_token}
+    fi
+}
+
+stop(){
+    echo -e "Stopping Cloudflared"
+    if [[ "$(screen_pid)" == '' ]]; then
+        echo -e "Cloudflared stopped"
+    else
+        until [[ "$(screen_pid)" == '' ]]; do
+            kill $(screen_pid)
+            echo -e "Cloudflared stopped"
+            sleep 1
+        done
+    fi
+}
