@@ -75,7 +75,7 @@ function install_binary() {
 	fi
 
 	# Install init.d
-	wget -qO ${file_initd} --show-progress "https://raw.githubusercontent.com/GegeDesembri/openwrt-tools/master/cloudflared/cloudflared"
+	wget -qO ${file_initd} --show-progress "https://raw.githubusercontent.com/daffapratamaaa/openwrt-tools/main/cloudflared/cloudflared"
 	chmod +x ${file_initd}
 }
 
