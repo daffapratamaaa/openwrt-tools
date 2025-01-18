@@ -91,13 +91,9 @@ Berikut merupakan urutan pemasangan dari awal:
 	wget -qO /root/cfdmgr "https://raw.githubusercontent.com/daffapratamaaa/openwrt-tools/main/cloudflared/cfdmgr" && \
     chmod +x /root/cfdmgr
 	```
-	
-	Maka akan seperti ini
-	
-	![Wget Terminal CFDMGR](https://raw.githubusercontent.com/helmiau/gegevps-openwrt-tools/master/cloudflared/assets/wget-cfdmgr.png)
 
 
-5. Jalankan command `/root/cfdmgr i` untuk memasang Cloudflared pada OpenWrt. Nanti akan seperti gambar di bawah ini. Ketika ada tulisan ** Enter New Cloudflared Token: (leave empty if no change)``** silahkan kembali ke browser yang berada pada web **Dashboard Cloudflare ZeroTrust** untuk menyalin token.
+5. Jalankan command `/root/cfdmgr i` untuk memasang Cloudflared pada OpenWrt. Nanti akan seperti gambar di bawah ini. Ketika ada tulisan **💬 Enter New Cloudflared Token: (leave empty if no change)``** silahkan kembali ke browser yang berada pada web **Dashboard Cloudflare ZeroTrust** untuk menyalin token.
 	
 	![Install CF dari CFDMGR](https://raw.githubusercontent.com/helmiau/gegevps-openwrt-tools/master/cloudflared/assets/cfdmgr-install.png)
 
