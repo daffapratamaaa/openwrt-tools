@@ -128,7 +128,7 @@ function token_update() {
 	if [[ -e ${file_initd} ]]; then
 		# Edit data
 		echo -e "Editing data..."
-		echo -e "ðŸ’¬ Enter New Cloudflared Token: (leave empty if no change)"
+		echo -e "💬 Enter New Cloudflared Token: (leave empty if no change)"
 		read -e -p "==>> " new_token
 		if [[ $(echo -e "${new_token}" | awk '{print length}') -gt 30 ]]; then
 			echo -e "${new_token}" >/tmp/temp_cf.token
@@ -136,10 +136,10 @@ function token_update() {
 			sed -i "s|^cfd_token=.*$|cfd_token=${mod_token}|g" ${file_initd}
 			rm /tmp/temp_cf.token
 			# Success notif
-			echo -e "âœ” Cloudflared data updated successfully."
+			echo -e "✔ Cloudflared data updated successfully."
 		else
 			# No change notif
-			echo -e "âœ” Cloudflared data is not updated."
+			echo -e "✔ Cloudflared data is not updated."
 		fi
 	else
 		echo -e "File ${file_initd} not available."
@@ -155,12 +155,12 @@ function init_toggler() {
 		# Enable Cloudflared
 		${file_initd} enable
 		${file_initd} start
-		echo -e "âœ” Cloudflared Autostart activated."
+		echo -e "✔ Cloudflared Autostart activated."
 	elif [[ $(grep "cfd_token=" ${file_initd} | awk '{print length}') -gt 30 ]] && [[ $1 == "stop" ]]; then
 		# Disable Cloudflared
 		${file_initd} disable
 		${file_initd} stop
-		echo -e "âœ” Cloudflared Autostart disabled."
+		echo -e "✔ Cloudflared Autostart disabled."
 	else
 		# unknown command
 		echo -e "Unknown command."
@@ -173,7 +173,7 @@ function uninstall_cloudflared() {
 	${file_initd} stop
 	[ -f ${file_initd} ] && rm -f ${file_initd}
 	[ -f ${path_binary} ] && rm -f ${path_binary}
-	echo -e "âœ” Cloudflared uninstalled successfully!."
+	echo -e "✔ Cloudflared uninstalled successfully!."
 }
 
 # Install commands
